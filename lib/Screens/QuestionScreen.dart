@@ -133,7 +133,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ),
               ),
               Positioned(
-                bottom: -20, // Posición para sobresalir del borde
+                bottom: -20,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -143,12 +143,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                   ),
                   child: Text(
                     "GENIAL",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Colors.cyan,
                     ),
@@ -294,7 +294,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 5),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width * 0.8, // Adjust width to center
+                    alignment: Alignment.center, // Center the text
                     decoration: BoxDecoration(
                         color: selectedOption == option
                             ? const Color.fromARGB(255, 17, 0, 255)
@@ -303,6 +304,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     child: Center(
                       child: Text(
                         option,
+                        textAlign: TextAlign.center, // Center the text
                         style: TextStyle(
                             color: selectedOption == option
                                 ? const Color.fromARGB(255, 172, 211, 235)

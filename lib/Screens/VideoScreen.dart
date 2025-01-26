@@ -17,21 +17,24 @@ class _VideoScreenState extends State<VideoScreen> {
   void initState() {
     super.initState();
     _controllerChildren = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=3w6HDtP4nYA')!,
+      initialVideoId: YoutubePlayer.convertUrlToId(
+          'https://www.youtube.com/watch?v=3w6HDtP4nYA')!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
     );
     _controllerAdolescent = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=XASJM7K9EEo')!,
+      initialVideoId: YoutubePlayer.convertUrlToId(
+          'https://www.youtube.com/watch?v=XASJM7K9EEo')!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
     );
     _controllerSenior = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=2xzu6hczdc0')!,
+      initialVideoId: YoutubePlayer.convertUrlToId(
+          'https://www.youtube.com/watch?v=2xzu6hczdc0')!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
@@ -48,39 +51,52 @@ class _VideoScreenState extends State<VideoScreen> {
   }
 
   Widget _buildYoutubePlayer(YoutubePlayerController controller, String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            YoutubePlayer(
+              controller: controller,
+              showVideoProgressIndicator: true,
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
-        const SizedBox(height: 20),
-        YoutubePlayer(
-          controller: controller,
-          showVideoProgressIndicator: true,
-        ),
-        const SizedBox(height: 20),
-      ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mira y Aprende 🍿'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(40.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildYoutubePlayer(_controllerChildren, "Videos para Niñas/os"),
-              _buildYoutubePlayer(_controllerAdolescent, "Videos para Adolescentes"),
-              _buildYoutubePlayer(_controllerSenior, "Videos para Adultos Mayores"),
-            ],
+      body: Container(
+        margin: const EdgeInsets.only(top: 50),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildYoutubePlayer(
+                    _controllerChildren, "Videos para Niñas/os"),
+                _buildYoutubePlayer(
+                    _controllerAdolescent, "Videos para Adolescentes"),
+                _buildYoutubePlayer(
+                    _controllerSenior, "Videos para Adultos Mayores"),
+              ],
+            ),
           ),
         ),
       ),

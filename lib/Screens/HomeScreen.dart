@@ -36,11 +36,10 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'rubik',
                       color: Colors.grey),
                 ),
               ),
-              const SizedBox(height: 100),
+              const SizedBox(height: 80),
               MyButton(
                   text: "Comenzar",
                   onTap: () {
