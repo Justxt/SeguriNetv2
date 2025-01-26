@@ -13,6 +13,8 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  int correctAnswers = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +54,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BadgeScreen(correctAnswers: 0),
+                        builder: (context) => BadgeScreen(correctAnswers: correctAnswers),
                       ),
                     );
                   },
@@ -98,6 +100,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         builder: (context) => QuestionScreen(
                           questions: childrenQuestions,
                           category: 'children',
+                          onQuizCompleted: (int score) {
+                            setState(() {
+                              correctAnswers = score;
+                            });
+                          },
                         ),
                       ),
                     );
@@ -157,14 +164,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 40.0),
+                  padding: const EdgeInsets.only(right: 30.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/cc.png',
-                        height: 170,
-                        width: 150,
+                        'assets/images/home.png',
+                        height: 150,
+                        width: 140,
                       ),
                     ],
                   ),
@@ -181,6 +188,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         builder: (context) => QuestionScreen(
                           questions: adolescentQuestions,
                           category: 'adolescent',
+                          onQuizCompleted: (int score) {
+                            setState(() {
+                              correctAnswers = score;
+                            });
+                          },
                         ),
                       ),
                     );
@@ -245,9 +257,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/ca.png',
-                        height: 180,
-                        width: 170,
+                        'assets/images/home.png',
+                        height: 150,
+                        width: 150,
                       ),
                     ],
                   ),
@@ -264,6 +276,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         builder: (context) => QuestionScreen(
                           questions: seniorQuestions,
                           category: 'senior',
+                          onQuizCompleted: (int score) {
+                            setState(() {
+                              correctAnswers = score;
+                            });
+                          },
                         ),
                       ),
                     );

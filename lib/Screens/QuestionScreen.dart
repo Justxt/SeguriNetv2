@@ -6,8 +6,9 @@ import 'BadgeScreen.dart';
 class QuestionScreen extends StatefulWidget {
   final List<Question> questions;
   final String category;
+  final Function(int) onQuizCompleted;
 
-  const QuestionScreen({super.key, required this.questions, required this.category});
+  const QuestionScreen({super.key, required this.questions, required this.category, required this.onQuizCompleted});
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -169,6 +170,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         _shuffleOptions();
       });
     } else {
+      widget.onQuizCompleted(correctAnswers);
       // Navegar a BadgeScreen al finalizar las preguntas
       Navigator.pushReplacement(
         context,
