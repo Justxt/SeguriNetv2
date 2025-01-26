@@ -95,13 +95,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            QuestionScreen(questions: childrenQuestions),
+                        builder: (context) => QuestionScreen(
+                          questions: childrenQuestions,
+                          category: 'children',
+                        ),
                       ),
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 40),
                     child: Material(
                       elevation: 10.0,
                       borderRadius: BorderRadius.circular(30),
@@ -160,8 +162,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/home.png',
-                        height: 140,
+                        'assets/images/cc.png',
+                        height: 170,
                         width: 150,
                       ),
                     ],
@@ -176,18 +178,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            QuestionScreen(questions: adolescentQuestions),
+                        builder: (context) => QuestionScreen(
+                          questions: adolescentQuestions,
+                          category: 'adolescent',
+                        ),
                       ),
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 40),
                     child: Material(
-                      elevation: 10.0,
+                      elevation: 11.0,
                       borderRadius: BorderRadius.circular(30),
                       child: Container(
-                        padding: EdgeInsets.only(top: 10, bottom: 20, left: 20),
+                        padding: EdgeInsets.only(top: 20, bottom: 20, left: 20),
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -203,7 +207,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: 5.0,
+                              height: 10.0,
                             ),
                             Container(
                               padding: EdgeInsets.all(5),
@@ -236,14 +240,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 40.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/home.png',
-                        height: 140,
-                        width: 150,
+                        'assets/images/ca.png',
+                        height: 180,
+                        width: 170,
                       ),
                     ],
                   ),
@@ -257,8 +261,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            QuestionScreen(questions: seniorQuestions),
+                        builder: (context) => QuestionScreen(
+                          questions: seniorQuestions,
+                          category: 'senior',
+                        ),
                       ),
                     );
                   },
@@ -317,13 +323,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 40.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/home.png',
-                        height: 140,
+                        'assets/images/cs.png',
+                        height: 130,
                         width: 150,
                       ),
                     ],

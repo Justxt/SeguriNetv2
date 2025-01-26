@@ -5,8 +5,9 @@ import 'BadgeScreen.dart';
 
 class QuestionScreen extends StatefulWidget {
   final List<Question> questions;
+  final String category;
 
-  const QuestionScreen({super.key, required this.questions});
+  const QuestionScreen({super.key, required this.questions, required this.category});
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -26,7 +27,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void _shuffleOptions() {
     setState(() {
-      shuffledOptions = List.from(widget.questions[currentQuestionIndex].options);
+      shuffledOptions =
+          List.from(widget.questions[currentQuestionIndex].options);
       shuffledOptions.shuffle(Random());
     });
   }
@@ -51,7 +53,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.cyan.shade100, const Color.fromARGB(255, 56, 181, 197)],
+                    colors: [
+                      Colors.cyan.shade100,
+                      const Color.fromARGB(255, 56, 181, 197)
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -60,7 +65,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(height: 50), // Espacio para la imagen sobresaliente
+                    SizedBox(
+                        height: 50), // Espacio para la imagen sobresaliente
                     Row(
                       children: [
                         Container(
@@ -173,6 +179,20 @@ class _QuestionScreenState extends State<QuestionScreen> {
     }
   }
 
+  String _getImagePath() {
+    int imageIndex = (currentQuestionIndex % 10) + 1;
+    switch (widget.category) {
+      case 'children':
+        return 'assets/images/children/$imageIndex.png';
+      case 'adolescent':
+        return 'assets/images/adolescent/$imageIndex.png';
+      case 'senior':
+        return 'assets/images/senior/$imageIndex.png';
+      default:
+        return 'assets/images/default.png';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Question currentQuestion = widget.questions[currentQuestionIndex];
@@ -231,9 +251,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ),
               ],
             ),
-            Image.asset('assets/images/c1.png', height: 300),
+            SizedBox(
+              height: 30,
+            ),
+            Image.asset(_getImagePath(), height: 250),
             SizedBox(
               height: 20,
+              
             ),
             Text(
               "Pregunta ${currentQuestionIndex + 1} de ${widget.questions.length}",

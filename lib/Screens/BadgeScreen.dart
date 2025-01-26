@@ -14,19 +14,19 @@ class BadgeScreen extends StatelessWidget {
 
     if (correctAnswers >= 8) {
       badgeTitle = "Centurión Cibernético";
-      badgeImage = 'assets/images/810.png';
+      badgeImage = 'assets/images/11.png';
       nextBadgeMessage = "¡Felicidades! Tienes la insignia más alta.";
       nextBadgeImage = '';
     } else if (correctAnswers >= 4) {
       badgeTitle = "Defensor Cibernético";
-      badgeImage = 'assets/images/47.png';
+      badgeImage = 'assets/images/12.png';
       nextBadgeMessage = "Siguiente insignia: Centurión Cibernético";
-      nextBadgeImage = 'assets/images/810.png';
+      nextBadgeImage = 'assets/images/11.png';
     } else if (correctAnswers >= 1) {
       badgeTitle = "Guardia Novato";
-      badgeImage = 'assets/images/03.png';
+      badgeImage = 'assets/images/13.png';
       nextBadgeMessage = "Siguiente insignia: Defensor Cibernético";
-      nextBadgeImage = 'assets/images/47.png';
+      nextBadgeImage = 'assets/images/12.png';
     } else {
       badgeTitle = "Aún no tienes insignias";
       badgeImage = '';

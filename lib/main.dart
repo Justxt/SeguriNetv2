@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/homescreen': (context) => HomeScreen(),
         '/categoryscreen': (context) => CategoryScreen(),
-        '/questionscreen': (context) => QuestionScreen(questions: []),
+        '/questionscreen': (context) => QuestionScreen(questions: [], category: 'defaultCategory'),
         '/badgescreen': (context) => BadgeScreen(correctAnswers: 0),
         '/videoscreen': (context) => VideoScreen(),
       },
