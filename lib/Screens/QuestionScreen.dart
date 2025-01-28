@@ -41,6 +41,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     Question currentQuestion = widget.questions[currentQuestionIndex];
     showDialog(
       context: context,
+      barrierDismissible: true,
       builder: (context) {
         return Dialog(
           shape: RoundedRectangleBorder(
@@ -132,34 +133,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: -20,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    _nextQuestion();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
-                  ),
-                  child: Text(
-                    "GENIAL",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.cyan,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         );
       },
-    );
+    ).then((_) {
+      _nextQuestion();
+    });
   }
 
   void _nextQuestion() {
